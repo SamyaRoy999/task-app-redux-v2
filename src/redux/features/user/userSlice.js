@@ -15,7 +15,10 @@ export const createUser = createAsyncThunk(
   async ({ email, password }) => {
     const data = await createUserWithEmailAndPassword(auth, email, password);
     console.log(data);
-    return;
+    return {
+      email: data.user.email,
+      name: data.user.displayName,
+    };
   }
 );
 
@@ -50,10 +53,3 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-
-//  apiKey: "AIzaSyC0Mix2vEXI_HciI-gdQXAvdi6ioCwubJU",
-//   authDomain: "redux-task-app-66893.firebaseapp.com",
-//   projectId: "redux-task-app-66893",
-//   storageBucket: "redux-task-app-66893.firebasestorage.app",
-//   messagingSenderId: "704706919883",
-//   appId: "1:704706919883:web:91cc02ce3bff42ff274a4e"
